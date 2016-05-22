@@ -11,8 +11,7 @@ matrix init(double * arr, int rows, int cols) {
     mat->arr = malloc(size * sizeof(double));
     assert(mat->arr != NULL);
 
-    for(int i = 0; i < size; i++) 
-        mat->arr[i] = arr[i];
+    memcpy(mat->arr, arr, rows * cols * sizeof(double));
 
     mat->rows = rows;
     mat->cols = cols;
@@ -129,4 +128,33 @@ matrix scale(matrix mat, double scalar) {
     free(arr);
 
     return new_mat;
+}
+
+matrix constant_matrix(int rows, int cols, double value) {
+    double * arr = malloc(rows * cols * sizeof(double));
+    for(int i = 0; i < rows * cols; arr[i++] = value);
+    matrix mat = init(arr, rows, cols);
+    free(arr);
+    return mat;
+
+}
+
+matrix zeros(int rows, int cols) {
+    return constant_matrix(rows, cols, 0.0);
+}
+
+matrix ones(int rows, int cols) {
+    return constant_matrix(rows, cols, 1.0);
+}
+
+matrix eye(int rows, int cols) {
+    double * arr = malloc(rows * cols * sizeof(double));
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; i < cols; j++) {
+            arr[i * cols + j] = (i == j);
+        }
+    }
+    matrix mat = init(arr, rows, cols);
+    free(arr);
+    return mat;
 }

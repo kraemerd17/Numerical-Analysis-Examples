@@ -238,7 +238,7 @@ matrix scale(matrix mat, double scalar);
 
 matrix zeros(int rows, int cols);
 matrix ones(int rows, int cols);
-matrix eye(int size);
+matrix eye(int rows, int cols);
 matrix diag(double * arr);
 
 matrix randmat(int rows, int cols);
