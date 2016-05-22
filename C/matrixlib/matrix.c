@@ -1,5 +1,7 @@
 #include "matrix.h"
 
+
+
 matrix init(double * arr, int rows, int cols) {
     assert(rows > 0);
     assert(cols > 0);
@@ -118,7 +120,7 @@ matrix vectorized(double (*func)(double), matrix mat) {
     return new_mat;
 }
 
-matrix scale(matrix mat, double scalar) {
+matrix scale(matrix mat, const double scalar) {
     double * arr = malloc(mat->size * sizeof(double));
     for (int i = 0; i < mat->size; i++) {
         arr[i] = scalar * mat->arr[i];
@@ -130,7 +132,7 @@ matrix scale(matrix mat, double scalar) {
     return new_mat;
 }
 
-matrix constant_matrix(int rows, int cols, double value) {
+matrix constant_matrix(int rows, int cols, const double value) {
     double * arr = malloc(rows * cols * sizeof(double));
     for(int i = 0; i < rows * cols; arr[i++] = value);
     matrix mat = init(arr, rows, cols);
@@ -158,3 +160,23 @@ matrix eye(int rows, int cols) {
     free(arr);
     return mat;
 }
+
+matrix diag(double * arr, int length) {
+    int rows = length;
+    int cols = length;
+    double * new_arr = malloc(rows * cols * sizeof(double));
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (i == j) {
+                new_arr[i * cols + j] = arr[i];
+            }
+            else {
+                new_arr[i * cols + j] = 0.0;
+            }
+        }
+    }
+
+}
+
+

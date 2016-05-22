@@ -7,28 +7,9 @@ void print_arr(double * arr, int n) {
 }
 
 int main(void) {
-    double arr[9] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-    matrix m = init(arr, 3, 3);
-    print(m);
-    printf("\n");
-    matrix n = transpose(m);
-    print(n);
-    printf("\n");
-
-    matrix asdf = mul(m, n);
-    matrix fdsa = mul(n, m);
-
-    print(asdf);
-    printf("\n");
-
-    print(fdsa);
-    printf("\n");
-
-
-    del(m);
-    del(n);
-    del(asdf);
-
-
+    srand(time(NULL));
+    matrix A = randnmat(5,5);
+    print(A);
+    del(A);
     return 0;
 }

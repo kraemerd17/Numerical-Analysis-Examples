@@ -3,9 +3,12 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 #include <math.h>
 #include <string.h>
 #include <assert.h>
+
+#define PI 3.14159265358979323846264338
 
 /*
  * The matrix_t struct. This includes a double array pointer which serves as the
@@ -239,7 +242,7 @@ matrix scale(matrix mat, double scalar);
 matrix zeros(int rows, int cols);
 matrix ones(int rows, int cols);
 matrix eye(int rows, int cols);
-matrix diag(double * arr);
+matrix diag(double * arr, int length);
 
 matrix randmat(int rows, int cols);
 matrix randnmat(int rows, int cols);
