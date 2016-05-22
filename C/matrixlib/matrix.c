@@ -129,5 +129,4 @@ matrix scale(matrix mat, double scalar) {
     free(arr);
 
     return new_mat;
-
 }

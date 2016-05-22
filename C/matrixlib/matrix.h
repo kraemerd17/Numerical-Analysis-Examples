@@ -236,4 +236,12 @@ matrix vectorized(double (*func)(double), matrix mat);
  */
 matrix scale(matrix mat, double scalar);
 
+matrix zeros(int rows, int cols);
+matrix ones(int rows, int cols);
+matrix eye(int size);
+matrix diag(double * arr);
+
+matrix randmat(int rows, int cols);
+matrix randnmat(int rows, int cols);
+
 #endif
